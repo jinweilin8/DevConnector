@@ -31,7 +31,6 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    console.log('in user backhand',req.body);
 
     const { name, email, password } = req.body;
     try {
@@ -42,7 +41,6 @@ router.post(
       // 4. return jsonwebtoken, so the user is loggin in right away
 
       let user = await User.findOne({ email });
-
       if (user) {
         return res
           .status(400)
